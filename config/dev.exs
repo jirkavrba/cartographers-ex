@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :cartographers, Cartographers.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "cartographers",
+  password: "cartographers",
   database: "cartographers_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
