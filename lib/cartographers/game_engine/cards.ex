@@ -17,11 +17,12 @@ defmodule Cartographers.GameEngine.Cards do
       defstruct [:material, :shape, :coin_reward]
     end
 
-    @enforce_keys [:variants, :time_value]
+    @enforce_keys [:name, :variants, :time_value]
     @type t :: %__MODULE__{
+      name: String.t,
       variants: list(ExploreCardVariant.t),
       time_value: integer
     }
-    defstruct [:variants, :time_value]
+    defstruct [:name, :variants, :time_value]
   end
 end
