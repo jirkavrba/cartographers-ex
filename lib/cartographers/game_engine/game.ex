@@ -14,5 +14,4 @@ defmodule Cartographers.GameEngine.Game do
     }
     defstruct [:name, :time_threshold, :active_edicts]
   end
-
 end
