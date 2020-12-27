@@ -1,4 +1,6 @@
 defmodule Cartographers.GameEngine.Cards do
+  alias Cartographers.GameEngine.Shape
+
   defmodule ExploreCard do
     defmodule ExploreCardVariant do
       @moduledoc """
@@ -9,7 +11,7 @@ defmodule Cartographers.GameEngine.Cards do
       @enforce_keys [:material, :shape, :coin_reward]
       @type t :: %__MODULE__{
           material: MapSheet.Tile.material,
-          shape: list(list(boolean)),
+          shape: Shape.t,
           coin_reward: boolean
       }
       defstruct [:material, :shape, :coin_reward]
