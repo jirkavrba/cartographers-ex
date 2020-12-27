@@ -29,9 +29,11 @@ defmodule Cartographers.GameEngine.MapSheet do
     """
     @enforce_keys [:material, :position]
     @type t :: %__MODULE__{
-      material: :empty | :forest | :village | :farm | :water | :monster | :mountain,
+      material: material,
       position: Position.t
     }
     defstruct [:material, :position]
+
+    @type material :: :empty | :forest | :village | :farm | :water | :monster | :mountain
   end
 end
