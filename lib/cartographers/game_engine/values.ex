@@ -9,10 +9,10 @@ defmodule Cartographers.GameEngine.Values do
 
   def seasons do
     [
-      %Game.Season{ name: "Spring", time_threshold: 8, active_edicts: [:a, :b] },
-      %Game.Season{ name: "Summer", time_threshold: 8, active_edicts: [:b, :c] },
-      %Game.Season{ name: "Autumn", time_threshold: 7, active_edicts: [:c, :d] },
-      %Game.Season{ name: "Winter", time_threshold: 6, active_edicts: [:d, :a] }
+      %Game.Season{name: "Spring", time_threshold: 8, active_edicts: [:a, :b]},
+      %Game.Season{name: "Summer", time_threshold: 8, active_edicts: [:b, :c]},
+      %Game.Season{name: "Autumn", time_threshold: 7, active_edicts: [:c, :d]},
+      %Game.Season{name: "Winter", time_threshold: 6, active_edicts: [:d, :a]}
     ]
   end
 
@@ -34,7 +34,6 @@ defmodule Cartographers.GameEngine.Values do
             material: :farm,
             coin_reward: false
           },
-
           %Cards.ExploreCard.ExploreCardVariant{
             shape: %Shape{
               width: 3,
@@ -60,25 +59,24 @@ defmodule Cartographers.GameEngine.Values do
               height: 2,
               definition: [
                 [false, false, true, true],
-                [true, true, true, false],
+                [true, true, true, false]
               ]
             },
             material: :forest,
             coin_reward: false
           },
-
           %Cards.ExploreCard.ExploreCardVariant{
             shape: %Shape{
               width: 4,
               height: 2,
               definition: [
                 [false, false, true, true],
-                [true, true, true, false],
+                [true, true, true, false]
               ]
             },
             material: :village,
             coin_reward: false
-          },
+          }
         ],
         time_value: 2
       },
@@ -92,13 +90,12 @@ defmodule Cartographers.GameEngine.Values do
               definition: [
                 [true, false, false],
                 [true, true, true],
-                [true, false, false],
+                [true, false, false]
               ]
             },
             material: :forest,
             coin_reward: false
           },
-
           %Cards.ExploreCard.ExploreCardVariant{
             shape: %Shape{
               width: 3,
@@ -106,7 +103,7 @@ defmodule Cartographers.GameEngine.Values do
               definition: [
                 [true, false, false],
                 [true, true, true],
-                [true, false, false],
+                [true, false, false]
               ]
             },
             material: :water,
@@ -119,50 +116,50 @@ defmodule Cartographers.GameEngine.Values do
         name: "Trhliny v prostoru",
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
-              shape: %Shape{
-                width: 1,
-                height: 1,
-                definition: [[true]]
-              },
-              material: :forest,
-              coin_reward: false
+            shape: %Shape{
+              width: 1,
+              height: 1,
+              definition: [[true]]
+            },
+            material: :forest,
+            coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-              shape: %Shape{
-                width: 1,
-                height: 1,
-                definition: [[true]]
-              },
-              material: :village,
-              coin_reward: false
+            shape: %Shape{
+              width: 1,
+              height: 1,
+              definition: [[true]]
+            },
+            material: :village,
+            coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-              shape: %Shape{
-                width: 1,
-                height: 1,
-                definition: [[true]]
-              },
-              material: :farm,
-              coin_reward: false
+            shape: %Shape{
+              width: 1,
+              height: 1,
+              definition: [[true]]
+            },
+            material: :farm,
+            coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-              shape: %Shape{
-                width: 1,
-                height: 1,
-                definition: [[true]]
-              },
-              material: :water,
-              coin_reward: false
+            shape: %Shape{
+              width: 1,
+              height: 1,
+              definition: [[true]]
+            },
+            material: :water,
+            coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-              shape: %Shape{
-                width: 1,
-                height: 1,
-                definition: [[true]]
-              },
-              material: :monster,
-              coin_reward: false
-          },
+            shape: %Shape{
+              width: 1,
+              height: 1,
+              definition: [[true]]
+            },
+            material: :monster,
+            coin_reward: false
+          }
         ],
         time_value: 0
       },
@@ -183,7 +180,6 @@ defmodule Cartographers.GameEngine.Values do
             material: :water,
             coin_reward: true
           },
-
           %Cards.ExploreCard.ExploreCardVariant{
             shape: %Shape{
               width: 3,
@@ -195,6 +191,158 @@ defmodule Cartographers.GameEngine.Values do
               ]
             },
             material: :water,
+            coin_reward: false
+          }
+        ]
+      },
+      %Cards.ExploreCard{
+        name: "Ovocný sad",
+        time_value: 2,
+        variants: [
+          %Cards.ExploreCard.ExploreCardVariant{
+            material: :forest,
+            shape: %Shape{
+              width: 3,
+              height: 2,
+              definition: [
+                [true, true, true],
+                [false, false, true]
+              ]
+            },
+            coin_reward: false
+          },
+          %Cards.ExploreCard.ExploreCardVariant{
+            material: :farm,
+            shape: %Shape{
+              width: 3,
+              height: 2,
+              definition: [
+                [true, true, true],
+                [false, false, true]
+              ]
+            },
+            coin_reward: false
+          }
+        ]
+      },
+      %Cards.ExploreCard{
+        name: "Les zapomnění",
+        time_value: 1,
+        variants: [
+          %Cards.ExploreCard.ExploreCardVariant{
+              material: :forest,
+              shape: %Shape{
+                width: 2,
+                height: 2,
+                definition: [
+                  [true, false],
+                  [false, true]
+                ]
+              },
+              coin_reward: true
+          },
+          %Cards.ExploreCard.ExploreCardVariant{
+              material: :forest,
+              shape: %Shape{
+                width: 2,
+                height: 3,
+                definition: [
+                  [true, false],
+                  [true, true],
+                  [false, true]
+                ]
+              },
+              coin_reward: false
+          }
+        ]
+      },
+      %Cards.ExploreCard{
+        name: "Hospodářství",
+        time_value: 2,
+        variants: [
+          %Cards.ExploreCard.ExploreCardVariant{
+              material: :village,
+              shape: %Shape{
+                  width: 2,
+                  height: 3,
+                  definition: [
+                    [true, false],
+                    [true, true],
+                    [true, false],
+                  ]
+              },
+              coin_reward: false
+          },
+          %Cards.ExploreCard.ExploreCardVariant{
+              material: :farm,
+              shape: %Shape{
+                  width: 2,
+                  height: 3,
+                  definition: [
+                    [true, false],
+                    [true, true],
+                    [true, false],
+                  ]
+              },
+              coin_reward: false
+          }
+        ]
+      },
+      %Cards.ExploreCard{
+        name: "Zemědělská půda",
+        time_value: 1,
+        variants: [
+          %Cards.ExploreCard.ExploreCardVariant{
+            material: :farm,
+            shape: %Shape{
+              width: 1,
+              height: 2,
+              definition: [
+                [true],
+                [true]
+              ],
+            },
+            coin_reward: true
+          },
+          %Cards.ExploreCard.ExploreCardVariant{
+            material: :farm,
+            shape: %Shape{
+              width: 3,
+              height: 3,
+              definition: [
+                [false, true, false],
+                [true, true, true],
+                [false, true, false],
+              ],
+            },
+            coin_reward: false
+          }
+        ]
+      },
+      %Cards.ExploreCard{
+        name: "Rybářská osada",
+        time_value: 2,
+        variants: [
+          %Cards.ExploreCard.ExploreCardVariant{
+            material: :village,
+            shape: %Shape{
+              width: 4,
+              height: 1,
+              definition: [
+                [true, true, true, true]
+              ]
+            },
+            coin_reward: false
+          },
+          %Cards.ExploreCard.ExploreCardVariant{
+            material: :water,
+            shape: %Shape{
+              width: 4,
+              height: 1,
+              definition: [
+                [true, true, true, true]
+              ]
+            },
             coin_reward: false
           }
         ]

@@ -10,19 +10,19 @@ defmodule Cartographers.GameEngine.Cards do
       """
       @enforce_keys [:material, :shape, :coin_reward]
       @type t :: %__MODULE__{
-          material: MapSheet.Tile.material,
-          shape: Shape.t,
-          coin_reward: boolean
-      }
+              material: MapSheet.Tile.material(),
+              shape: Shape.t(),
+              coin_reward: boolean
+            }
       defstruct [:material, :shape, :coin_reward]
     end
 
     @enforce_keys [:name, :variants, :time_value]
     @type t :: %__MODULE__{
-      name: String.t,
-      variants: list(ExploreCardVariant.t),
-      time_value: integer
-    }
+            name: String.t(),
+            variants: list(ExploreCardVariant.t()),
+            time_value: integer
+          }
     defstruct [:name, :variants, :time_value]
   end
 end

@@ -5,9 +5,9 @@ defmodule Cartographers.GameEngine.Player do
   """
   @enforce_keys [:id, :username]
   @type t :: %__MODULE__{
-    id: integer,
-    username: String.t,
-    map_sheet: MapSheet.t
-  }
+          id: integer,
+          username: String.t(),
+          map_sheet: MapSheet.t()
+        }
   defstruct [:id, :username, :map_sheet]
 end

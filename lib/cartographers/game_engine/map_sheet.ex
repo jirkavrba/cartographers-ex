@@ -4,9 +4,10 @@ defmodule Cartographers.GameEngine.MapSheet do
   """
   @enforce_keys [:tiles, :mountains, :ruins]
   @type t :: %__MODULE__{
-    tiles: list(list(Tile.t)), # A 11x11 matrix of tiles representing the paper sheet
-    ruins: list(Position.t)
-  }
+          # A 11x11 matrix of tiles representing the paper sheet
+          tiles: list(list(Tile.t())),
+          ruins: list(Position.t())
+        }
   defstruct [:tiles, :ruins]
 
   defmodule Position do
@@ -16,9 +17,9 @@ defmodule Cartographers.GameEngine.MapSheet do
     """
     @enforce_keys [:x, :y]
     @type t :: %__MODULE__{
-      x: integer,
-      y: integer
-    }
+            x: integer,
+            y: integer
+          }
     defstruct [:x, :y]
   end
 
@@ -29,9 +30,9 @@ defmodule Cartographers.GameEngine.MapSheet do
     """
     @enforce_keys [:material, :position]
     @type t :: %__MODULE__{
-      material: material,
-      position: Position.t
-    }
+            material: material,
+            position: Position.t()
+          }
     defstruct [:material, :position]
 
     @type material :: :empty | :forest | :village | :farm | :water | :monster | :mountain

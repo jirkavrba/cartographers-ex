@@ -1,5 +1,4 @@
 defmodule Cartographers.GameEngine.Game do
-
   defmodule Season do
     @moduledoc """
     A structure representing the four seasons, each season constists of a time threshold and a
@@ -8,10 +7,10 @@ defmodule Cartographers.GameEngine.Game do
     """
     @enforce_keys [:name, :time_threshold, :active_edicts]
     @type t :: %__MODULE__{
-        name:           :spring | :summer | :autumn | :winter,
-        time_threshold: integer,
-        active_edicts:  tuple,
-    }
+            name: :spring | :summer | :autumn | :winter,
+            time_threshold: integer,
+            active_edicts: tuple
+          }
     defstruct [:name, :time_threshold, :active_edicts]
   end
 end

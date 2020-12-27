@@ -14,9 +14,9 @@ defmodule Cartographers.GameEngine.Shape do
   """
   @enforce_keys [:width, :height, :definition]
   @type t :: %__MODULE__{
-    width: integer,
-    height: integer,
-    definition: list(list(boolean))
-  }
+          width: integer,
+          height: integer,
+          definition: list(list(boolean))
+        }
   defstruct [:width, :height, :definition]
 end
