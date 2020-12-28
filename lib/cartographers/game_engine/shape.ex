@@ -20,6 +20,38 @@ defmodule Cartographers.GameEngine.Shape do
         }
   defstruct [:width, :height, :definition]
 
+  @doc """
+  Provides a handy way of constructing shapes. Takes string as an input that can look like:
+
+  .#
+  ##
+  #.
+
+  which constructs a shape
+
+  %Shape{
+    width: 2,
+    height: 3,
+    definition: [
+      [false, true],
+      [true, true],
+      [true, false]
+    ]
+  }
+
+  """
+  @spec make(String.t) :: Shape.t
+  def make(""), do: raise ArgumentError
+  def make(input) when is_binary(input) do
+    rows = String.trim(input) |> String.split("\n")
+    %__MODULE__{
+      width: List.first(rows) |> String.length,
+      height: Enum.count(rows),
+      definition: Enum.map(rows, fn (row) -> String.graphemes(row) |> Enum.map(fn (point) -> point == "#" end) end)
+    }
+  end
+  def make(_), do: raise ArgumentError
+
   alias Cartographers.Utilities.ListRotations
 
   @doc """
