@@ -57,8 +57,8 @@ defmodule Cartographers.GameEngine.ShapeTest do
 
     shape = Shape.make("""
     .#
+    .#
     ##
-    #.
     """)
 
     %Shape{width: width, height: height, definition: definition} = Shape.rotate_clockwise(shape)
@@ -66,8 +66,109 @@ defmodule Cartographers.GameEngine.ShapeTest do
     assert width == 3
     assert height == 2
     assert definition == [
+      [true, false, false],
+      [true, true, true],
+    ]
+  end
+
+  test "shape can be rotated counter clockwise" do
+    shape = Shape.make("""
+    .#.
+    .#.
+    ###
+    """)
+
+    %Shape{width: width, height: height, definition: definition} = Shape.rotate_counterclockwise(shape)
+
+    assert width == 3
+    assert height == 3
+    assert definition == [
+      [false, false, true],
+      [true, true, true],
+      [false, false, true],
+    ]
+
+    shape = Shape.make("""
+    .#
+    .#
+    ##
+    """)
+
+    %Shape{width: width, height: height, definition: definition} = Shape.rotate_counterclockwise(shape)
+
+    assert width == 3
+    assert height == 2
+    assert definition == [
+      [true, true, true],
+      [false, false, true],
+    ]
+  end
+
+  test "shape can be flipped horizontally" do
+    shape = Shape.make("""
+    #.
+    ##
+    .#
+    """)
+
+    %Shape{width: width, height: height, definition: definition} = Shape.flip_horizontally(shape)
+
+    assert width == 2
+    assert height == 3
+    assert definition == [
+      [false, true],
+      [true, true],
+      [true, false]
+    ]
+
+    shape = Shape.make("""
+    ..#
+    .##
+    ##.
+    """)
+
+    %Shape{width: width, height: height, definition: definition} = Shape.flip_horizontally(shape)
+
+    assert width == 3
+    assert height == 3
+    assert definition == [
+      [true, false, false],
       [true, true, false],
       [false, true, true],
+    ]
+  end
+
+  test "shape can be flipped vertically" do
+    shape = Shape.make("""
+    ..#
+    .##
+    ##.
+    """)
+
+    %Shape{width: width, height: height, definition: definition} = Shape.flip_vertically(shape)
+
+    assert width == 3
+    assert height == 3
+    assert definition == [
+      [true, true, false],
+      [false, true, true],
+      [false, false, true],
+    ]
+
+    shape = Shape.make("""
+    #.
+    ##
+    .#
+    """)
+
+    %Shape{width: width, height: height, definition: definition} = Shape.flip_vertically(shape)
+
+    assert width == 2
+    assert height == 3
+    assert definition == [
+      [false, true],
+      [true, true],
+      [true, false]
     ]
   end
 end
