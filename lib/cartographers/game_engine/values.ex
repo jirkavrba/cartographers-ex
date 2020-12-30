@@ -424,6 +424,15 @@ defmodule Cartographers.GameEngine.Values do
     ]
   end
 
+  @spec ruins_cards :: list(Cards.RuinsCard.t())
+  def ruins_cards do
+    [
+      %Cards.RuinsCard{ name: "Zřícená pevnost" },
+      %Cards.RuinsCard{ name: "Zřícený chrám" },
+    ]
+  end
+
+  @spec edict_cards :: %{ (:a | :b | :c | :d) => ScoringRules.t() }
   def edict_cards do
     %{
       a: [

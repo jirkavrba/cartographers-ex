@@ -1,6 +1,7 @@
 defmodule Cartographers.GameEngine.Game do
   alias Cartographers.GameEngine.Player
   alias Cartographers.GameEngine.Cards
+  alias Cartographers.GameEngine.Values
 
   @type season :: :spring | :summer | :autumn | :winter
   @type cards :: Cards.ExploreCard.t() | Cards.RuinsCard.t() | Cards.MonsterCard.t()
@@ -30,4 +31,17 @@ defmodule Cartographers.GameEngine.Game do
       discard_deck: list(Game.cards)
   }
   defstruct [:id, :players, :current_season, :picked_edict_cards, :drawing_deck, :discard_deck]
+
+  @spec drawing_deck ::
+  defp drawing_deck do
+    monster = Values.monster_cards |> Enum.shuffle |> Enum.take(1)
+    Enum.shuffle(Values.explore_cards ++ Values.ruins_cards ++ monster)
+  end
+
+  @spec create(list(Player.t())) :: Game.t()
+  def create(players) when is_list(players) do
+    %__MODULE__{
+      drawing_deck: drawing_deck()
+    }
+  end
 end
