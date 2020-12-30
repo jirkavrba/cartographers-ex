@@ -50,4 +50,14 @@ defmodule Cartographers.GameEngine.Cards do
     }
     defstruct [:category, :name, :rule]
   end
+
+  defmodule MonsterCard do
+    @enforce_keys [:name, :shape, :rotation_direction]
+    @type t ::%__MODULE__{
+      name: String.t(),
+      shape: Shape.t(),
+      rotation_direction: :clockwise | :counter_clockwise
+    }
+    defstruct [:name, :shape, :rotation_direction]
+  end
 end

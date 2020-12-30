@@ -3,6 +3,8 @@ defmodule Cartographers.GameEngine.Values do
   This module contains all values and configurations for the game
   """
 
+  # TODO: Add translations from the english version of the game (translations will be then done on the client side)
+
   alias Cartographers.GameEngine.Game
   alias Cartographers.GameEngine.Cards
   alias Cartographers.GameEngine.Shape
@@ -347,6 +349,77 @@ defmodule Cartographers.GameEngine.Values do
           }
         ]
       }
+    ]
+  end
+
+  @spec monster_cards :: list(Cards.MonsterCard.t())
+  def monster_cards do
+    [
+      %Cards.MonsterCard{
+        name: "Útok goblinů",
+        shape: Shape.make("""
+        #..
+        .#.
+        ..#
+        """),
+        rotation_direction: :counter_clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Přepadení krysodlaky",
+        shape: Shape.make("###"),
+        rotation_direction: :clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Výpad koboldů",
+        shape: Shape.make("""
+        #.
+        ##
+        #.
+        """),
+        rotation_direction: :clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Invaze mozkožroutů",
+        shape: Shape.make("""
+        #.
+        ##
+        """),
+        rotation_direction: :counter_clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Rojení hmyzáků",
+        shape: Shape.make("""
+        .#
+        ##
+        #.
+        """),
+        rotation_direction: :clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Nájezd gobrů",
+        shape: Shape.make("""
+        #.#
+        #.#
+        """),
+        rotation_direction: :clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Řádění zlobrů",
+        shape: Shape.make("""
+        ##
+        ##
+        """),
+        rotation_direction: :counter_clockwise
+      },
+      %Cards.MonsterCard{
+        name: "Vpád gnolů",
+        shape: Shape.make("""
+        ##
+        #.
+        ##
+        """),
+        rotation_direction: :counter_clockwise
+      },
     ]
   end
 end
