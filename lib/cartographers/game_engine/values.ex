@@ -8,6 +8,7 @@ defmodule Cartographers.GameEngine.Values do
   alias Cartographers.GameEngine.Game
   alias Cartographers.GameEngine.Cards
   alias Cartographers.GameEngine.Shape
+  alias Cartographers.GameEngine.ScoringRules
 
   def seasons do
     [
@@ -421,5 +422,34 @@ defmodule Cartographers.GameEngine.Values do
         rotation_direction: :counter_clockwise
       },
     ]
+  end
+
+  def edict_cards do
+    %{
+      a: [
+        ScoringRules.Greenbough,
+        ScoringRules.SentinelWood,
+        ScoringRules.StonesideForest,
+        ScoringRules.Treetower,
+      ],
+      b: [
+        ScoringRules.CanalLake,
+        ScoringRules.MagesValley,
+        ScoringRules.ShoresideExpanse,
+        ScoringRules.TheGoldenGranary,
+      ],
+      c: [
+        ScoringRules.GreatCity,
+        ScoringRules.GreengoldPlains,
+        ScoringRules.Shieldgate,
+        ScoringRules.Wildholds,
+      ],
+      d: [
+        ScoringRules.Borderlands,
+        ScoringRules.LostBarony,
+        ScoringRules.TheBrokenRoad,
+        ScoringRules.TheCauldrons,
+      ]
+    }
   end
 end
