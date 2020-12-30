@@ -32,16 +32,26 @@ defmodule Cartographers.GameEngine.Game do
   }
   defstruct [:id, :players, :current_season, :picked_edict_cards, :drawing_deck, :discard_deck]
 
-  @spec drawing_deck ::
-  defp drawing_deck do
+  @spec create_drawing_deck :: list(Game.cards)
+  defp create_drawing_deck do
     monster = Values.monster_cards |> Enum.shuffle |> Enum.take(1)
     Enum.shuffle(Values.explore_cards ++ Values.ruins_cards ++ monster)
   end
 
+  @spec pick_edict_cards :: %{ (:a | :b | :c | :d) => Cards.EdictCard.ScoringRule.t() }
+  defp pick_edict_cards do
+    Values.edict_cards |> Enum.map(fn (category, available_rules) -> {category, available_rules |> Enum.shuffle |> Enum.take(1)} end)
+  end
+
   @spec create(list(Player.t())) :: Game.t()
-  def create(players) when is_list(players) do
+  def create(players) do
     %__MODULE__{
-      drawing_deck: drawing_deck()
+      id: 0, # TODO: Add safe random number
+      players: players,
+      current_season: :spring,
+      picked_edict_cards: pick_edict_cards(),
+      drawing_deck: create_drawing_deck(),
+      discard_deck: []
     }
   end
 end
