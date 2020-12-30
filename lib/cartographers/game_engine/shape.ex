@@ -52,7 +52,7 @@ defmodule Cartographers.GameEngine.Shape do
   end
   def make(_), do: raise ArgumentError
 
-  alias Cartographers.Utilities.ListRotations
+  import Cartographers.Utilities.MatrixRotations
 
   @doc """
   Rotates a given shape clockwise
@@ -74,7 +74,7 @@ defmodule Cartographers.GameEngine.Shape do
     %__MODULE__{
       width: original.height,
       height: original.width,
-      definition: ListRotations.rotate_right(original.definition)
+      definition: rotate_right(original.definition)
     }
   end
 
@@ -98,7 +98,7 @@ defmodule Cartographers.GameEngine.Shape do
     %__MODULE__{
       width: original.height,
       height: original.width,
-      definition: ListRotations.rotate_left(original.definition)
+      definition: rotate_left(original.definition)
     }
   end
 
