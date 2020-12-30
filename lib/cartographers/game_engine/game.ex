@@ -3,6 +3,7 @@ defmodule Cartographers.GameEngine.Game do
   alias Cartographers.GameEngine.Cards
 
   @type season :: :spring | :summer | :autumn | :winter
+  @type cards :: Cards.ExploreCard.t() | Cards.RuinsCard.t() | Cards.MonsterCard.t()
 
   defmodule Season do
     @moduledoc """
@@ -25,8 +26,8 @@ defmodule Cartographers.GameEngine.Game do
       players: list(Player.t()),
       current_season: Game.season,
       picked_edict_cards: %{ a: Cards.EdictCard, b: Cards.EdictCard, c: Cards.EdictCard, d: Cards.EdictCard },
-      drawing_deck: list(Cards.ExploreCard | Cards.RuinsCard | Cards.MonsterCard),
-      discard_deck: list(Cards.ExploreCard | Cards.RuinsCard | Cards.MonsterCard)
+      drawing_deck: list(Game.cards),
+      discard_deck: list(Game.cards)
   }
   defstruct [:id, :players, :current_season, :picked_edict_cards, :drawing_deck, :discard_deck]
 end
