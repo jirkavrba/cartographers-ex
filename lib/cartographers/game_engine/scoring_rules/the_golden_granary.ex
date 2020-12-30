@@ -1,8 +1,8 @@
-defmodule Cartographers.GameEngine.ScoringRules.Greenbough do
+defmodule Cartographers.GameEngine.ScoringRules.TheGoldenGranary do
   @moduledoc """
-  # Greenbough
-  Earn one reputation star for each row and column with at least one forest space.
-  The same forest space may be scored in a row and a column.
+  # The golden granary
+  Earn one reputation star for each water space adjacent to a ruins space.
+  Earn three reputation stars for each farm space on a ruins space.
   """
   alias Cartographers.GameEngine.MapSheet
 
