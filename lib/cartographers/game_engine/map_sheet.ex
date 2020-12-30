@@ -2,7 +2,7 @@ defmodule Cartographers.GameEngine.MapSheet do
   @moduledoc """
   Representation of the map sheet that every player receives at the beggining of the game
   """
-  @enforce_keys [:tiles, :mountains, :ruins]
+  @enforce_keys [:tiles, :ruins]
   @type t :: %__MODULE__{ # A 11x11 matrix of tiles representing the paper sheet
           tiles: list(list(Tile.t())),
           ruins: list(Position.t())
@@ -55,15 +55,15 @@ defmodule Cartographers.GameEngine.MapSheet do
   """
   @spec in_bounds?(Position.t()) :: boolean
   def in_bounds?(position = %Position{}) do
-    min(position.x, position.y) > 0 &&
-    max(position.x, position.y) < 12
+    min(position.x, position.y) >= 0 &&
+    max(position.x, position.y) < 11
   end
 
   @spec in_bounds?(Tile.t()) :: boolean
   def in_bounds?(tile = %Tile{}) do
     position = tile.position
-    min(position.x, position.y) > 0 &&
-    max(position.x, position.y) < 12
+    min(position.x, position.y) >= 0 &&
+    max(position.x, position.y) < 11
   end
 
   @doc """
