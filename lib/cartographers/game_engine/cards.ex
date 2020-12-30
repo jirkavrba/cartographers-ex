@@ -60,4 +60,10 @@ defmodule Cartographers.GameEngine.Cards do
     }
     defstruct [:name, :shape, :rotation_direction]
   end
+
+  defmodule RuinsCard do
+    @enforce_keys [:name]
+    @type t :: %__MODULE__{ name: String.t() }
+    defstruct [:name]
+  end
 end
