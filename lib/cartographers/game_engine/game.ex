@@ -48,6 +48,9 @@ defmodule Cartographers.GameEngine.Game do
     |> Enum.into(%{})
   end
 
+  @doc """
+  Creates a game for the given list of players, this include picking edict cards and generating drawing deck
+  """
   @spec create(list(Player.t())) :: Game.t()
   def create(players) do
     %__MODULE__{
