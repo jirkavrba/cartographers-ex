@@ -1,4 +1,4 @@
-defmodule Cartographers.Utilities.MatrixRotations do
+defmodule Cartographers.GameEngine.Utilities.MatrixRotations do
   # TODO: Optimize those algoritms to use tail recursion
 
   @doc """

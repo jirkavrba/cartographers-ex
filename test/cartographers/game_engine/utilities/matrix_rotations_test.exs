@@ -1,6 +1,6 @@
-defmodule Cartographers.Utilities.MatrixRotationsTest do
+defmodule Cartographers.GameEngine.Utilities.MatrixRotationsTest do
   use ExUnit.Case
-  import Cartographers.Utilities.MatrixRotations
+  import Cartographers.GameEngine.Utilities.MatrixRotations
 
   test "test ListRotations.rotate_left/1" do
     assert rotate_left([]) == []
