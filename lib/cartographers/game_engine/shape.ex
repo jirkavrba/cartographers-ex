@@ -142,6 +142,10 @@ defmodule Cartographers.GameEngine.Shape do
     %{original | definition: original.definition |> Enum.reverse}
   end
 
+  @doc """
+  Produces all variants of the given shape.
+  (Every possible shape that can be produced by rotating and flipping)
+  """
   @spec all_variants(Shape.t()) :: MapSet.t(Shape.t())
   def all_variants(shape), do: MapSet.new([
     shape,
@@ -155,4 +159,12 @@ defmodule Cartographers.GameEngine.Shape do
     shape |> rotate_counterclockwise |> flip_vertically,
     shape |> rotate_counterclockwise |> flip_horizontally,
   ])
+
+  @doc """
+  Returns whether the two provided shapes are variants of each other
+  """
+  @spec is_variant_of?(Shape.t(), Shape.t()) :: boolean
+  def is_variant_of?(original, other) do
+    all_variants(original) |> Enum.member?(other)
+  end
 end

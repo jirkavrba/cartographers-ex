@@ -246,4 +246,47 @@ defmodule Cartographers.GameEngine.ShapeTest do
 
     assert Shape.all_variants(shape) |> Enum.to_list == expected
   end
+
+  test "Shape.is_variant_of?/1" do
+    assert Shape.is_variant_of?(
+      Shape.make("""
+      #..
+      ###
+      #..
+      """),
+      Shape.make("""
+      .#.
+      .#.
+      ###
+      """)
+    )
+
+    assert Shape.is_variant_of?(
+      Shape.make("""
+      #..
+      ###
+      #..
+      """),
+      Shape.make("""
+      ###
+      .#.
+      .#.
+      """)
+    )
+
+    assert not Shape.is_variant_of?(
+      Shape.make("""
+      #..
+      ###
+      #..
+      """),
+      Shape.make("""
+      .##
+      .#.
+      .#.
+      """)
+    )
+
+    # TODO: Add additional tests for variants probably
+  end
 end
