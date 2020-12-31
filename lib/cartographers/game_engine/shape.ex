@@ -52,7 +52,7 @@ defmodule Cartographers.GameEngine.Shape do
   end
   def make(_), do: raise ArgumentError
 
-  import Cartographers.Utilities.MatrixRotations
+  import Cartographers.GameEngine.Utilities.MatrixRotations
 
   @doc """
   Rotates a given shape clockwise
