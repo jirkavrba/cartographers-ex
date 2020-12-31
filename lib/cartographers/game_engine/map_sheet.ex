@@ -75,11 +75,7 @@ defmodule Cartographers.GameEngine.MapSheet do
   end
 
   @spec in_bounds?(Tile.t()) :: boolean
-  def in_bounds?(tile = %Tile{}) do
-    position = tile.position
-    min(position.x, position.y) >= 0 &&
-    max(position.x, position.y) < 11
-  end
+  def in_bounds?(tile = %Tile{}), do: in_bounds?(tile.position)
 
   @doc """
   Returns a list of adjanced tiles of a given tile.
