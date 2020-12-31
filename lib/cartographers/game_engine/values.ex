@@ -25,28 +25,20 @@ defmodule Cartographers.GameEngine.Values do
         name: "Říčka v polích",
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 3,
-              height: 3,
-              definition: [
-                [true, true, true],
-                [true, false, false],
-                [true, false, false]
-              ]
-            },
+            shape: Shape.make("""
+            ###
+            #..
+            #..
+            """),
             material: :farm,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 3,
-              height: 3,
-              definition: [
-                [true, true, true],
-                [true, false, false],
-                [true, false, false]
-              ]
-            },
+            shape: Shape.make("""
+            ###
+            #..
+            #..
+            """),
             material: :water,
             coin_reward: false
           }
@@ -57,26 +49,18 @@ defmodule Cartographers.GameEngine.Values do
         name: "Víska ve větvích",
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 4,
-              height: 2,
-              definition: [
-                [false, false, true, true],
-                [true, true, true, false]
-              ]
-            },
+            shape: Shape.make("""
+            ..##
+            ###.
+            """),
             material: :forest,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 4,
-              height: 2,
-              definition: [
-                [false, false, true, true],
-                [true, true, true, false]
-              ]
-            },
+            shape: Shape.make("""
+            ..##
+            ###.
+            """),
             material: :village,
             coin_reward: false
           }
@@ -87,28 +71,20 @@ defmodule Cartographers.GameEngine.Values do
         name: "Bažiny",
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 3,
-              height: 3,
-              definition: [
-                [true, false, false],
-                [true, true, true],
-                [true, false, false]
-              ]
-            },
+            shape: Shape.make("""
+            #..
+            ###
+            #..
+            """),
             material: :forest,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 3,
-              height: 3,
-              definition: [
-                [true, false, false],
-                [true, true, true],
-                [true, false, false]
-              ]
-            },
+            shape: Shape.make("""
+            #..
+            ###
+            #..
+            """),
             material: :water,
             coin_reward: false
           }
@@ -119,47 +95,27 @@ defmodule Cartographers.GameEngine.Values do
         name: "Trhliny v prostoru",
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 1,
-              height: 1,
-              definition: [[true]]
-            },
+            shape: Shape.make("#"),
             material: :forest,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 1,
-              height: 1,
-              definition: [[true]]
-            },
+            shape: Shape.make("#"),
             material: :village,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 1,
-              height: 1,
-              definition: [[true]]
-            },
+            shape: Shape.make("#"),
             material: :farm,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 1,
-              height: 1,
-              definition: [[true]]
-            },
+            shape: Shape.make("#"),
             material: :water,
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 1,
-              height: 1,
-              definition: [[true]]
-            },
+            shape: Shape.make("#"),
             material: :monster,
             coin_reward: false
           }
@@ -171,28 +127,20 @@ defmodule Cartographers.GameEngine.Values do
         time_value: 1,
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 1,
-              height: 3,
-              definition: [
-                [true],
-                [true],
-                [true]
-              ]
-            },
+            shape: Shape.make("""
+            #
+            #
+            #
+            """),
             material: :water,
             coin_reward: true
           },
           %Cards.ExploreCard.ExploreCardVariant{
-            shape: %Shape{
-              width: 3,
-              height: 3,
-              definition: [
-                [false, false, true],
-                [false, true, true],
-                [true, true, false]
-              ]
-            },
+            shape: Shape.make("""
+            ..#
+            .##
+            ##.
+            """),
             material: :water,
             coin_reward: false
           }
@@ -204,26 +152,18 @@ defmodule Cartographers.GameEngine.Values do
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
             material: :forest,
-            shape: %Shape{
-              width: 3,
-              height: 2,
-              definition: [
-                [true, true, true],
-                [false, false, true]
-              ]
-            },
+            shape: Shape.make("""
+            ###
+            ..#
+            """),
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
             material: :farm,
-            shape: %Shape{
-              width: 3,
-              height: 2,
-              definition: [
-                [true, true, true],
-                [false, false, true]
-              ]
-            },
+            shape: Shape.make("""
+            ###
+            ..#
+            """),
             coin_reward: false
           }
         ]
@@ -234,27 +174,19 @@ defmodule Cartographers.GameEngine.Values do
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
               material: :forest,
-              shape: %Shape{
-                width: 2,
-                height: 2,
-                definition: [
-                  [true, false],
-                  [false, true]
-                ]
-              },
+              shape: Shape.make("""
+              #.
+              .#
+              """),
               coin_reward: true
           },
           %Cards.ExploreCard.ExploreCardVariant{
               material: :forest,
-              shape: %Shape{
-                width: 2,
-                height: 3,
-                definition: [
-                  [true, false],
-                  [true, true],
-                  [false, true]
-                ]
-              },
+              shape: Shape.make("""
+              #.
+              ##
+              .#
+              """),
               coin_reward: false
           }
         ]
@@ -265,28 +197,20 @@ defmodule Cartographers.GameEngine.Values do
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
               material: :village,
-              shape: %Shape{
-                  width: 2,
-                  height: 3,
-                  definition: [
-                    [true, false],
-                    [true, true],
-                    [true, false],
-                  ]
-              },
+              shape: Shape.make("""
+              #.
+              ##
+              #.
+              """),
               coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
               material: :farm,
-              shape: %Shape{
-                  width: 2,
-                  height: 3,
-                  definition: [
-                    [true, false],
-                    [true, true],
-                    [true, false],
-                  ]
-              },
+              shape: Shape.make("""
+              #.
+              ##
+              #.
+              """),
               coin_reward: false
           }
         ]
@@ -297,27 +221,19 @@ defmodule Cartographers.GameEngine.Values do
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
             material: :farm,
-            shape: %Shape{
-              width: 1,
-              height: 2,
-              definition: [
-                [true],
-                [true]
-              ],
-            },
+            shape: Shape.make("""
+            #
+            #
+            """),
             coin_reward: true
           },
           %Cards.ExploreCard.ExploreCardVariant{
             material: :farm,
-            shape: %Shape{
-              width: 3,
-              height: 3,
-              definition: [
-                [false, true, false],
-                [true, true, true],
-                [false, true, false],
-              ],
-            },
+            shape: Shape.make("""
+            .#.
+            ###
+            .#.
+            """),
             coin_reward: false
           }
         ]
@@ -328,24 +244,12 @@ defmodule Cartographers.GameEngine.Values do
         variants: [
           %Cards.ExploreCard.ExploreCardVariant{
             material: :village,
-            shape: %Shape{
-              width: 4,
-              height: 1,
-              definition: [
-                [true, true, true, true]
-              ]
-            },
+            shape: Shape.make("####"),
             coin_reward: false
           },
           %Cards.ExploreCard.ExploreCardVariant{
             material: :water,
-            shape: %Shape{
-              width: 4,
-              height: 1,
-              definition: [
-                [true, true, true, true]
-              ]
-            },
+            shape: Shape.make("####"),
             coin_reward: false
           }
         ]
