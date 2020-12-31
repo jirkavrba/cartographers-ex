@@ -171,4 +171,79 @@ defmodule Cartographers.GameEngine.ShapeTest do
       [true, false]
     ]
   end
+
+  test "Shape rotation left and rotation right correlation" do
+    shape = Shape.make("""
+    #.#
+    .##
+    #..
+    """)
+
+    assert Shape.rotate_clockwise(shape) == (
+      shape
+      |> Shape.rotate_counterclockwise
+      |> Shape.rotate_counterclockwise
+      |> Shape.rotate_counterclockwise
+    )
+
+    assert Shape.rotate_counterclockwise(shape) == (
+      shape
+      |> Shape.rotate_clockwise
+      |> Shape.rotate_clockwise
+      |> Shape.rotate_clockwise
+    )
+  end
+
+  test "Shape.all_variants/1" do
+    shape = Shape.make("""
+    ##.
+    ...
+    ...
+    """)
+
+    expected = Enum.map([
+      """
+      ##.
+      ...
+      ...
+      """,
+      """
+      #..
+      #..
+      ...
+      """,
+      """
+      ...
+      #..
+      #..
+      """,
+      """
+      ...
+      ...
+      ##.
+      """,
+      """
+      ...
+      ...
+      .##
+      """,
+      """
+      ...
+      ..#
+      ..#
+      """,
+      """
+      ..#
+      ..#
+      ...
+      """,
+      """
+      .##
+      ...
+      ...
+      """,
+    ], &Shape.make/1) |> MapSet.new |> Enum.to_list
+
+    assert Shape.all_variants(shape) |> Enum.to_list == expected
+  end
 end

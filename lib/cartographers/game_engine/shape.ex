@@ -141,4 +141,18 @@ defmodule Cartographers.GameEngine.Shape do
   def flip_vertically(original) do
     %{original | definition: original.definition |> Enum.reverse}
   end
+
+  @spec all_variants(Shape.t()) :: MapSet.t(Shape.t())
+  def all_variants(shape), do: MapSet.new([
+    shape,
+    shape |> flip_vertically,
+    shape |> flip_horizontally,
+    shape |> rotate_clockwise,
+    shape |> rotate_counterclockwise,
+    shape |> rotate_clockwise |> rotate_clockwise,
+    shape |> rotate_clockwise |> flip_vertically,
+    shape |> rotate_clockwise |> flip_horizontally,
+    shape |> rotate_counterclockwise |> flip_vertically,
+    shape |> rotate_counterclockwise |> flip_horizontally,
+  ])
 end
