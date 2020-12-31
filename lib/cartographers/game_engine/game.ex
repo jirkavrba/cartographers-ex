@@ -32,15 +32,23 @@ defmodule Cartographers.GameEngine.Game do
   }
   defstruct [:id, :players, :current_season, :picked_edict_cards, :drawing_deck, :discard_deck]
 
+  @spec pick_one(list) :: any
+  defp pick_one(list) when is_list(list), do: list |> Enum.shuffle |> List.first
+
   @spec create_drawing_deck :: list(Game.cards)
   defp create_drawing_deck do
-    monster = Values.monster_cards |> Enum.shuffle |> Enum.take(1)
-    Enum.shuffle(Values.explore_cards ++ Values.ruins_cards ++ monster)
+    Enum.shuffle(
+      Values.explore_cards ++
+      Values.ruins_cards ++
+      [Values.monster_cards |> pick_one]
+    )
   end
 
   @spec pick_edict_cards :: %{ (:a | :b | :c | :d) => Cards.EdictCard.ScoringRule.t() }
   defp pick_edict_cards do
-    Values.edict_cards |> Enum.map(fn (category, available_rules) -> {category, available_rules |> Enum.shuffle |> Enum.take(1)} end)
+    Values.edict_cards
+    |> Enum.map(fn ({category, available_rules}) -> {category, available_rules |> pick_one} end)
+    |> Enum.into(%{})
   end
 
   @spec create(list(Player.t())) :: Game.t()

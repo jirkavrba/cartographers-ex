@@ -38,6 +38,21 @@ defmodule Cartographers.GameEngine.MapSheet do
   end
 
   @doc """
+  Creates an empty map sheet to save some boilerplate code across the application
+  """
+  @spec empty :: MapSheet.t()
+  def empty, do: %__MODULE__{
+    ruins: [],
+    tiles: for i <- 0 .. 10 do Enum.map(0 .. 10, &(
+      %Tile{
+        position: %Position{x: i, y: &1},
+        material: :empty
+       }
+     ))
+    end
+  }
+
+  @doc """
   Returns a tile at the given position or nil when the specified coordinates are out of bounds
   """
   @spec tile_at(MapSheet.t(), integer, integer) :: Tile.t()
@@ -46,7 +61,7 @@ defmodule Cartographers.GameEngine.MapSheet do
   @spec tile_at(MapSheet.t(), Position.t()) :: Tile.t()
   def tile_at(map_sheet = %__MODULE__{}, position = %Position{}) do
     if in_bounds?(position),
-      do: map_sheet.tiles[position.y][position.x],
+      do: map_sheet.tiles |> Enum.at(position.y) |> Enum.at(position.x),
       else: nil
   end
 
