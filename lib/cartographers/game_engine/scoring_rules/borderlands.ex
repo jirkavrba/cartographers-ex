@@ -15,10 +15,8 @@ defmodule Cartographers.GameEngine.ScoringRules.Borderlands do
     rows = MapSheet.rows(map_sheet)
     columns = MapSheet.columns(map_sheet)
 
-    6 * (
-      rows ++ columns
+    6 * (rows ++ columns
         |> Enum.reject(&contains_empty_space/1)
-        |> Enum.count()
-    )
+        |> Enum.count())
   end
 end
