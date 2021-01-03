@@ -157,6 +157,19 @@ defmodule Cartographers.GameEngine.MapSheet do
   def row(map_sheet, n), do: Enum.map(map_sheet.tiles, fn (column) -> Enum.at(column, n) end)
 
   @doc """
+  Returns all columns of the given map sheet
+  """
+  @spec columns(MapSheet.t()) :: list(list(Tile.t()))
+  def columns(map_sheet), do: 1 .. 10 |> Enum.map(&column(map_sheet, &1))
+
+  @doc """
+  Returns all rows of the given map sheet
+  """
+  @spec rows(MapSheet.t()) :: list(list(Tile.t()))
+  def rows(map_sheet), do: 1 .. 10 |> Enum.map(&row(map_sheet, &1))
+
+
+  @doc """
   Returns all tiles that has the specified material
   """
   @spec tiles_by_material(MapSheet.t(), Game.material()) :: list(Tile.t())

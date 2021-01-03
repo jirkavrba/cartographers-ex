@@ -12,8 +12,8 @@ defmodule Cartographers.GameEngine.ScoringRules.Borderlands do
 
   @spec calculate_score(MapSheet.t()) :: integer
   def calculate_score(map_sheet) do
-    rows = 1 .. 10 |> Enum.map(&MapSheet.row(map_sheet, &1))
-    columns = 1 .. 10 |> Enum.map(&MapSheet.column(map_sheet, &1))
+    rows = MapSheet.rows(map_sheet)
+    columns = MapSheet.columns(map_sheet)
 
     6 * (
       rows ++ columns
