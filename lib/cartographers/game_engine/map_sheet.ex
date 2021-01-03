@@ -53,15 +53,70 @@ defmodule Cartographers.GameEngine.MapSheet do
   }
 
   @doc """
+  Shorthand method for creating map sheets
+  There are several symbols representing different materials
+
+  e = Empty, f = Forest, w = Water, v = Village, m = Mountain, F = Farm, M = Monster
+
+  Example:
+  MapSheet.make([
+    "eeeeeeeefee",
+    "emeeemeefee",
+    "eeeMemmmfee",
+    "eeFeeeeefee",
+    "eeeeeweefee",
+    "eeeewvvvfee",
+    "eeeeeeevfee",
+    "eeFeeeeefee",
+    "eeeeeweefee",
+    "eeeewvvvfee",
+    "emeeemeefee"
+  ])
+  """
+  @spec make(list(String.t()), list(Position.t())) :: MapSheet.t()
+  def make(source, ruins \\ []) when is_list(source) do
+    tiles = source
+    |> Enum.map(&String.trim/1)
+    |> Enum.map(&String.graphemes/1)
+    |> Enum.map(fn (line) -> Enum.map(line, &(case &1 do
+          "e" -> :empty
+          "f" -> :forest
+          "w" -> :water
+          "v" -> :village
+          "m" -> :mountain
+          "F" -> :farm
+          "M" -> :monster
+        end))
+      end)
+    |> Enum.with_index
+    |> Enum.map(fn ({rows, x}) ->
+      rows
+      |> Enum.with_index
+      |> Enum.map(fn ({tile, y}) -> %Tile{
+          material: tile,
+          position: %Position{
+            x: x,
+            y: y
+          }
+        } end)
+      end)
+
+    %__MODULE__{
+      ruins: ruins,
+      tiles: tiles
+    }
+  end
+
+  @doc """
   Returns a tile at the given position or nil when the specified coordinates are out of bounds
   """
   @spec tile_at(MapSheet.t(), integer, integer) :: Tile.t()
-  def tile_at(map_sheet = %__MODULE__{}, x, y), do: tile_at(map_sheet, %Position{x: x, y: y})
+  def tile_at(map_sheet, x, y), do: tile_at(map_sheet, %Position{x: x, y: y})
 
   @spec tile_at(MapSheet.t(), Position.t()) :: Tile.t()
-  def tile_at(map_sheet = %__MODULE__{}, position = %Position{}) do
+  def tile_at(map_sheet, position = %Position{x: x, y: y}) do
     if in_bounds?(position),
-      do: map_sheet.tiles |> Enum.at(position.y) |> Enum.at(position.x),
+      do: map_sheet.tiles |> Enum.at(y) |> Enum.at(x),
       else: nil
   end
 
@@ -69,16 +124,16 @@ defmodule Cartographers.GameEngine.MapSheet do
   Determines, whether the given position or tile is within bounds of the map sheet.
   """
   @spec in_bounds?(Position.t()) :: boolean
-  def in_bounds?(position = %Position{}) do
+  def in_bounds?(%Position{} = position) do
     min(position.x, position.y) >= 0 &&
     max(position.x, position.y) < 11
   end
 
   @spec in_bounds?(Tile.t()) :: boolean
-  def in_bounds?(tile = %Tile{}), do: in_bounds?(tile.position)
+  def in_bounds?(%Tile{} = tile), do: in_bounds?(tile.position)
 
   @doc """
-  Returns a list of adjanced tiles of a given tile.
+  Returns a list of tiles adjanced to the given tile.
   """
   @spec neighbour_tiles(MapSheet.t(), Tile.t()) :: list(Tile.t())
   def neighbour_tiles(map_sheet, tile) do
@@ -86,7 +141,7 @@ defmodule Cartographers.GameEngine.MapSheet do
     vectors
       |> Enum.map(fn ({x, y}) -> %Position{x: tile.position.x + x, y: tile.position.y + y} end)
       |> Enum.filter(&in_bounds?/1)
-      |> Enum.map(&map_sheet.tile_at(&1))
+      |> Enum.map(&tile_at(map_sheet, &1))
   end
 
   @doc """
@@ -100,4 +155,14 @@ defmodule Cartographers.GameEngine.MapSheet do
   """
   @spec row(MapSheet.t(), integer) :: list(Tile.t())
   def row(map_sheet, n), do: Enum.map(map_sheet.tiles, fn (column) -> Enum.at(column, n) end)
+
+  @doc """
+  Returns all tiles that has the specified material
+  """
+  @spec tiles_by_material(MapSheet.t(), Game.material()) :: list(Tile.t())
+  def tiles_by_material(map_sheet, material) do
+    map_sheet.tiles
+    |> List.flatten()
+    |> Enum.filter(&(&1.material == material))
+  end
 end
