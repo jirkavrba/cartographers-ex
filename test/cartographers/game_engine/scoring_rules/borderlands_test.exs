@@ -4,7 +4,6 @@ defmodule Cartographers.GameEngine.ScoringRules.BorderlandsTest do
   alias Cartographers.GameEngine.MapSheet
   alias Cartographers.GameEngine.MapSheet.Position
   alias Cartographers.GameEngine.MapSheet.Tile
-  alias Cartographers.GameEngine.ScoringRules.Borderlands
 
   test "generated test 1609668397878" do
     assert Cartographers.GameEngine.ScoringRules.Borderlands.calculate_score(%MapSheet{
