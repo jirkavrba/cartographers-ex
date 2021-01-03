@@ -160,13 +160,13 @@ defmodule Cartographers.GameEngine.MapSheet do
   Returns all columns of the given map sheet
   """
   @spec columns(MapSheet.t()) :: list(list(Tile.t()))
-  def columns(map_sheet), do: 1 .. 10 |> Enum.map(&column(map_sheet, &1))
+  def columns(map_sheet), do: 0 .. 10 |> Enum.map(&column(map_sheet, &1))
 
   @doc """
   Returns all rows of the given map sheet
   """
   @spec rows(MapSheet.t()) :: list(list(Tile.t()))
-  def rows(map_sheet), do: 1 .. 10 |> Enum.map(&row(map_sheet, &1))
+  def rows(map_sheet), do: 0 .. 10 |> Enum.map(&row(map_sheet, &1))
 
 
   @doc """
