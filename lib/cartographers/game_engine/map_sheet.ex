@@ -88,4 +88,10 @@ defmodule Cartographers.GameEngine.MapSheet do
       |> Enum.filter(&in_bounds?/1)
       |> Enum.map(&map_sheet.tile_at(&1))
   end
+
+  @spec column(MapSheet.t(), integer) :: list(Tile.t())
+  def column(map_sheet, n), do: Enum.at(map_sheet.tiles, n)
+
+  @spec row(MapSheet.t(), integer) :: list(Tile.t())
+  def row(map_sheet, n), do: Enum.map(map_sheet.tiles, fn (column) -> Enum.at(column, n) end)
 end

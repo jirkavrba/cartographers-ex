@@ -7,8 +7,17 @@ defmodule Cartographers.GameEngine.ScoringRules.Borderlands do
 
   @behaviour Cartographers.GameEngine.Cards.EdictCard.ScoringRule
 
+  defp contains_empty_space(row), do: row |> Enum.any?(&(&1.material == :empty))
+
   @spec calculate_score(MapSheet.t()) :: integer
-  def calculate_score(_map_sheet) do
-    0
+  def calculate_score(map_sheet) do
+    rows = 1 .. 10 |> Enum.map(&MapSheet.row(map_sheet, &1))
+    columns = 1 .. 10 |> Enum.map(&MapSheet.column(map_sheet, &1))
+
+    6 * (
+      rows ++ columns
+        |> Enum.reject(&contains_empty_space/1)
+        |> Enum.count()
+    )
   end
 end
