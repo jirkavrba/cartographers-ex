@@ -9,7 +9,14 @@ defmodule Cartographers.GameEngine.ScoringRules.TheGoldenGranary do
   @behaviour Cartographers.GameEngine.Cards.EdictCard.ScoringRule
 
   @spec calculate_score(MapSheet.t()) :: integer
-  def calculate_score(_map_sheet) do
-    0
+  def calculate_score(map_sheet) do
+    neighbors = map_sheet.ruins
+    |> Enum.map(&MapSheet.tile_at(map_sheet, &1))
+    |> Enum.map(&MapSheet.neighbour_tiles(map_sheet, &1))
+    |> List.flatten
+    |> Enum.uniq
+
+    Enum.count(neighbors, &(&1.material == :water)) +
+    Enum.count(neighbors, &(&1.material == :farm)) * 3
   end
 end
