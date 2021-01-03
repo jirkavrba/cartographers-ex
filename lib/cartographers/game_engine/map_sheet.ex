@@ -116,7 +116,7 @@ defmodule Cartographers.GameEngine.MapSheet do
   @spec tile_at(MapSheet.t(), Position.t()) :: Tile.t()
   def tile_at(map_sheet, position = %Position{x: x, y: y}) do
     if in_bounds?(position),
-      do: map_sheet.tiles |> Enum.at(y) |> Enum.at(x),
+      do: map_sheet.tiles |> Enum.at(x) |> Enum.at(y),
       else: nil
   end
 

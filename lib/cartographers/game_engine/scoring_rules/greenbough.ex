@@ -10,9 +10,8 @@ defmodule Cartographers.GameEngine.ScoringRules.Greenbough do
 
   @spec calculate_score(MapSheet.t()) :: integer
   def calculate_score(map_sheet) do
-    rows = MapSheet.rows(map_sheet)
-    columns = MapSheet.columns(map_sheet)
-
-    rows ++ columns |> Enum.count(fn (row) -> Enum.any?(row, &(&1.material == :forest)) end)
+    MapSheet.rows(map_sheet) ++
+    MapSheet.columns(map_sheet)
+    |> Enum.count(fn (row) -> Enum.any?(row, &(&1.material == :forest)) end)
   end
 end
