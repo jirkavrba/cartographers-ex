@@ -7,6 +7,7 @@ defmodule Cartographers.GameEngine.ScoringRules.Borderlands do
 
   @behaviour Cartographers.GameEngine.Cards.EdictCard.ScoringRule
 
+  @spec contains_empty_space(list(Tile.t())) :: boolean
   defp contains_empty_space(row), do: row |> Enum.any?(&(&1.material == :empty))
 
   @spec calculate_score(MapSheet.t()) :: integer

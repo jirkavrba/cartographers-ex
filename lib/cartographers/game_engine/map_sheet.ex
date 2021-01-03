@@ -89,9 +89,15 @@ defmodule Cartographers.GameEngine.MapSheet do
       |> Enum.map(&map_sheet.tile_at(&1))
   end
 
+  @doc """
+  Returns the nth column of the grid
+  """
   @spec column(MapSheet.t(), integer) :: list(Tile.t())
   def column(map_sheet, n), do: Enum.at(map_sheet.tiles, n)
 
+  @doc """
+  Returns the nth row of the grid
+  """
   @spec row(MapSheet.t(), integer) :: list(Tile.t())
   def row(map_sheet, n), do: Enum.map(map_sheet.tiles, fn (column) -> Enum.at(column, n) end)
 end
