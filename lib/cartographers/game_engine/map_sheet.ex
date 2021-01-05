@@ -37,6 +37,19 @@ defmodule Cartographers.GameEngine.MapSheet do
     @type material :: :empty | :forest | :village | :farm | :water | :monster | :mountain
   end
 
+  defmodule Cluster do
+    @moduledoc """
+    Wrapper for a cluster of adjanced tiles that share the same material
+    """
+    @enforce_keys [:material, :size, :tiles]
+    @type t :: %__MODULE__{
+      material: Tile.material,
+      size: integer,
+      tiles: list(Tile.t())
+    }
+    defstruct [:material, :size, :tiles]
+  end
+
   @doc """
   Creates an empty map sheet to save some boilerplate code across the application
   """
